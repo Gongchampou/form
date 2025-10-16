@@ -15,32 +15,29 @@
   <p id="msg"></p>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyMqigOfOUzQLFaktChi2GNVDPTilfazuCLt07ZKgnhqZTT4mvjg4nT4co1Nx71NJpPTw/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwa5hMRiAYqiHa68wAGg2PqQR0YdMgLQhyQjCh-hhby69FzbrYCV1kdZLHMU3_8pY3g5g/exec";
 
     document.getElementById("myForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const formData = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        message: e.target.message.value,
-      };
+      const msg = document.getElementById("msg");
+      msg.textContent = "Submitting...";
 
-      document.getElementById("msg").textContent = "Submitting...";
+      try {
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(e.target)
+        });
 
-      const response = await fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      });
+        if (!response.ok) throw new Error();
 
-      if (response.ok) {
-        document.getElementById("msg").textContent = "✅ Submitted Successfully!";
+        msg.textContent = "✅ Submitted Successfully!";
         e.target.reset();
-      } else {
-        document.getElementById("msg").textContent = "❌ Submission failed.";
+      } catch (err) {
+        msg.textContent = "❌ Submission failed.";
       }
     });
   </script>
+
 </body>
 </html>
