@@ -6,6 +6,9 @@ A minimal, modern HTML form that submits to a Google Apps Script web app and sav
 - Submission target: Google Apps Script Web App URL set in `assets/js/script.js` (`scriptURL`)
 
 ---
+# link that deploy in github pages
+- [git hub page link](https://gongchampou.github.io/form/)
+- [spreedsheet excel data like backend link](https://docs.google.com/spreadsheets/d/14f8RQP5EIMZvEXYGF59iT16qnRtlJKVPO19rbW0K1W0/edit?gid=0#gid=0)
 
 ## How it works
 - `index.html` defines fields: `name`, `email`, `message`, `address`.
