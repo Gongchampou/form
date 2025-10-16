@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Custom Google Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit Your Info</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <h2>Submit Your Info</h2>
-  <form id="myForm">
-    <input type="text" name="name" placeholder="Your Name" required><br><br>
-    <input type="email" name="email" placeholder="Your Email" required><br><br>
-    <textarea name="message" placeholder="Message" required></textarea><br><br>
-    <textarea name="address" placeholder="address" required></textarea><br><br>
-    <button type="submit">Submit</button>
-  </form>
-
-  <p id="msg"></p>
-
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxru3-7RT-dceQraVQpFjPX4zTBo3UVYh9IISq6EAChV2KhUu6-_XYjqT6iBTdLUH78vQ/exec"
-    document.getElementById("myForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const msg = document.getElementById("msg");
-      msg.textContent = "Submitting...";
-
-      try {
-        const response = await fetch(scriptURL, {
-          method: "POST",
-          body: new FormData(e.target)
-        });
-
-        if (!response.ok) throw new Error();
-
-        msg.textContent = "✅ Submitted Successfully!";
-        e.target.reset();
-      } catch (err) {
-        msg.textContent = "❌ Submission failed.";
-      }
-    });
-  </script>
+  <main class="page">
+    <section class="card" aria-labelledby="formTitle">
+      <h1 id="formTitle" class="title">Submit Your Info</h1>
+      <form id="myForm" class="form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" placeholder="Your Name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message..." required rows="4"></textarea>
+        </div>
+        <div class="field">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" placeholder="Your address" required rows="3" autocomplete="street-address"></textarea>
+        </div>
+        <button type="submit" class="btn">
+          <span class="btn__label">Submit</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+      <p id="msg" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="assets/js/script.js"></script>
 
 </body>
 </html>
