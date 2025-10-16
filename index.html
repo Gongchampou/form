@@ -9,14 +9,14 @@
     <input type="text" name="name" placeholder="Your Name" required><br><br>
     <input type="email" name="email" placeholder="Your Email" required><br><br>
     <textarea name="message" placeholder="Message" required></textarea><br><br>
+    <textarea name="address" placeholder="address" required></textarea><br><br>
     <button type="submit">Submit</button>
   </form>
 
   <p id="msg"></p>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwa5hMRiAYqiHa68wAGg2PqQR0YdMgLQhyQjCh-hhby69FzbrYCV1kdZLHMU3_8pY3g5g/exec";
-
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxru3-7RT-dceQraVQpFjPX4zTBo3UVYh9IISq6EAChV2KhUu6-_XYjqT6iBTdLUH78vQ/exec"
     document.getElementById("myForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
